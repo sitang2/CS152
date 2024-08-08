@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Business List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Businesses</h1>
+        <ul>
+            {% for business in businesses %}
+                <li>
+                    {{ business.name }}
+                    <a href="{{ url_for('submit_review', business_id=business.id) }}">Submit Review</a> |
+                    <a href="{{ url_for('view_business', business_id=business.id) }}">View Reviews</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('home') }}">Home</a>
+    </div>
+</body>
+</html>
